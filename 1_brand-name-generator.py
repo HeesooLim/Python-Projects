@@ -1,3 +1,9 @@
+#----------------------------------------------------------------------------
+# File name   : 1_brand-name-generator.py
+# Created By  : Heesoo Lim
+# Created Date: 12/01/2022
+# ---------------------------------------------------------------------------
+
 # print welcome message
 print("Welcome to brand name generator!")
 
