@@ -1,3 +1,9 @@
+#----------------------------------------------------------------------------
+# File name   : 2_bill-calculator.py
+# Created By  : Heesoo Lim
+# Created Date: 13/01/2022
+# ---------------------------------------------------------------------------
+
 print("Welcome to the bill calculator!")
 print("Please enter following information..\n")
 
