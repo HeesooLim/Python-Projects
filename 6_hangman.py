@@ -132,7 +132,7 @@ while hangman_status_number < len(answer):
   print_status(hangman_status_number, blank_word, prev_guess)
 
   # get the user guess input
-  guess = input("Your guess: ")
+  guess = input("Your guess: ").lower()
 
   # only if the user typed a single letter
   if re.match('([a-zA-Z])', guess) and len(guess) == 1:
