@@ -1,3 +1,9 @@
+#----------------------------------------------------------------------------
+# File name   : 12_higher-lower.py
+# Created By  : Heesoo Lim
+# Created Date: 25/01/2022
+# ---------------------------------------------------------------------------
+
 import ascii
 import random
 import data
@@ -23,7 +29,7 @@ def generate_comp_list():
   # return the list
   return comp_list
 
-start = input("Welcome to higher lower. Type 'y' to start the game!")
+start = input("Welcome to higher lower. Type 'y' to start the game! ")
 
 if start == 'y':
   while True:
@@ -36,7 +42,7 @@ if start == 'y':
     comp_a = comparisons[0]
     comp_b = comparisons[1]
 
-    print(f"A: {comp_a['name']}, {comp_a['description']}, from {comp_a['country']}")
+    print(f"A: {comp_a['name']}, {comp_a['description']}, from {comp_a['country']}{ascii.vs}")
     print(f"B: {comp_b['name']}, {comp_b['description']}, from {comp_b['country']}\n")
 
     # get the higher value
