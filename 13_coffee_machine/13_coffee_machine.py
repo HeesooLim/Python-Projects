@@ -11,14 +11,14 @@ from money_machine import MoneyMachine
 
 more_drink = True
 
+store_menu = menu.Menu()
+coffee_maker = CoffeeMaker()
+money_machine = MoneyMachine()
+
 while more_drink:
     # clear()
     print(data.ascii)
     print("What would you like to have? ")
-
-    store_menu = menu.Menu()
-    coffee_maker = CoffeeMaker()
-    money_machine = MoneyMachine()
     menu_name = input(store_menu.get_items())
 
     if menu_name == "off":
@@ -27,7 +27,7 @@ while more_drink:
     elif menu_name == "report":
         coffee_maker.report()
         money_machine.report()
-        more_drink = False
+        more_drink = True
     else:
         menu_item = store_menu.find_drink(menu_name)
         if menu_item is None:
