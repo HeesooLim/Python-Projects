@@ -1,3 +1,9 @@
+#----------------------------------------------------------------------------
+# File name   : 15_art_dots.py
+# Created By  : Heesoo Lim
+# Created Date: 30/01/2022
+# ---------------------------------------------------------------------------
+
 from turtle import Turtle, Screen
 import random
 import colorgram

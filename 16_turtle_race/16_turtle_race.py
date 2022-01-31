@@ -1,3 +1,9 @@
+#----------------------------------------------------------------------------
+# File name   : 16_turtle_race.py
+# Created By  : Heesoo Lim
+# Created Date: 30/01/2022
+# ---------------------------------------------------------------------------
+
 import random
 from turtle import Turtle, Screen, textinput
 
