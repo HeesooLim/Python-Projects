@@ -17,21 +17,17 @@ class Snake:
     def __init__(self, screen):
         self.screen = screen
         self.coords = STARTING_COORDS
-        self.snake_pieces = self.create_snake()
+        self.snake_pieces = []
+        self.create_snake()
         self.head = self.snake_pieces[0]
 
     def create_snake(self):
-        snake_pieces = []
+        """Create a snake"""
         for c in self.coords:
-            turtle = Turtle("square")
-            turtle.color("white")
-            turtle.speed(0)
-            turtle.penup()
-            turtle.goto(c)
-            snake_pieces.append(turtle)
-        return snake_pieces
+            self.add_piece(c)
 
     def update_coords(self):
+        """Update current coordinates"""
         coords = []
         for s in self.snake_pieces:
             coords.append(s.position())
@@ -42,8 +38,20 @@ class Snake:
         # change the value of coordinate[i] to coordinate[i - 1]
         for i in range(len(self.snake_pieces) - 1, 0, -1):
             self.snake_pieces[i].goto(self.coords[i - 1])
-        # self.snake_pieces[0].seth(heading)
         self.head.forward(20)
+
+    def add_piece(self, position):
+        """Add a snake piece"""
+        turtle = Turtle("square")
+        turtle.color("white")
+        turtle.speed(0)
+        turtle.penup()
+        turtle.goto(position)
+        self.snake_pieces.append(turtle)
+
+    def extend_snake(self):
+        """Add a snake piece at the end of the list"""
+        self.add_piece(self.snake_pieces[-1].position())
 
     def head_left(self):
         if self.head.heading() != RIGHT and self.head.heading() != LEFT:
@@ -61,9 +69,15 @@ class Snake:
         if self.head.heading() != UP and self.head.heading() != DOWN:
             self.head.seth(DOWN)
 
-    def is_on_screen(self):
+    def is_game_over(self):
+        """Check if the game is over (hit the wall or body)"""
+        # head's coordinates
         x, y = self.coords[0]
-
-        if -300 < x < 300 and -300 < y < 300:
+        # if the snake hits the wall
+        if -280 < x < 280 and -280 < y < 280:
+            # if the snake hits its body
+            for c in self.coords[1:]:
+                if self.head.distance(c) < 10:
+                    return False
             return True
         return False
