@@ -3,8 +3,7 @@
 # Created By  : Heesoo Lim
 # Created Date: 31/01/2022
 # ---------------------------------------------------------------------------
-import time
-from turtle import Turtle, Screen
+from turtle import Turtle
 
 STARTING_COORDS = [(0, 0), (-20, 0), (-40, 0)]
 LEFT = 180
@@ -13,9 +12,9 @@ UP = 90
 DOWN = 270
 
 
-class Snake:
-    def __init__(self, screen):
-        self.screen = screen
+class Snake(Turtle):
+    def __init__(self):
+        super().__init__()
         self.coords = STARTING_COORDS
         self.snake_pieces = []
         self.create_snake()
@@ -46,7 +45,7 @@ class Snake:
         turtle.color("white")
         turtle.speed(0)
         turtle.penup()
-        turtle.goto(position)
+        turtle.setpos(position)
         self.snake_pieces.append(turtle)
 
     def extend_snake(self):
@@ -68,6 +67,14 @@ class Snake:
     def head_down(self):
         if self.head.heading() != UP and self.head.heading() != DOWN:
             self.head.seth(DOWN)
+
+    def reset(self):
+        for s in self.snake_pieces:
+            s.hideturtle()
+        self.coords = [(0, 0), (-20, 0), (-40, 0)]
+        self.snake_pieces = []
+        self.create_snake()
+        self.head = self.snake_pieces[0]
 
     def is_game_over(self):
         """Check if the game is over (hit the wall or body)"""

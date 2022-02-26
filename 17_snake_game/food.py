@@ -20,8 +20,8 @@ class Food(Turtle):
         self.shapesize(stretch_len=.5, stretch_wid=.5)
         self.color(random.choice(self.COLORS))
         self.speed("fastest")
-        self.x = random.randint(-280, 280)
-        self.y = random.randint(-280, 280)
+        self.x = random.randint(-250, 250)
+        self.y = random.randint(-250, 250)
         self.goto(self.x, self.y)
 
     def get_position(self):
@@ -30,7 +30,7 @@ class Food(Turtle):
 
     def regen_food(self):
         """Regenerate the food"""
-        self.x = random.randint(-280, 280)
-        self.y = random.randint(-280, 280)
+        self.x = random.randint(-250, 250)
+        self.y = random.randint(-250, 250)
         self.goto(self.x, self.y)
         self.color(random.choice(self.COLORS))

@@ -16,7 +16,7 @@ screen.bgcolor("black")
 screen.title("Snake Game")
 screen.tracer(0)
 
-snake = Snake(screen)
+snake = Snake()
 food = Food()
 score = Scoreboard(screen)
 
@@ -27,7 +27,7 @@ screen.onkey(snake.head_down, "Down")
 screen.onkey(snake.head_left, "Left")
 screen.onkey(snake.head_right, "Right")
 
-while snake.is_game_over():
+while True:
     snake.move()
     screen.update()
     time.sleep(0.1)
@@ -40,5 +40,9 @@ while snake.is_game_over():
         food.regen_food()
         score.update_score()
 
-score.game_over()
+    if not snake.is_game_over():
+        snake.reset()
+        score.reset()
+
+# score.game_over()
 screen.exitonclick()

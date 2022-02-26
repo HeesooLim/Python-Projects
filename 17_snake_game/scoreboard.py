@@ -6,20 +6,28 @@ class Scoreboard(Turtle):
         super().__init__()
         self.screen = screen
         self.score = 0
+        with open('high_score.txt') as file:
+            self.high_score = int(file.read())
         self.color("white")
         self.hideturtle()
         self.penup()
-        self.goto(0, 270)
         self.display_score()
 
     def display_score(self):
         """Display current score"""
-        self.write(f"Score: {self.score}", move=False, align='center', font=('Arial', 15, 'normal'))
+        self.clear()
+        self.setpos(-280, 270)
+        self.write(f"Score: {self.score}", move=False, align='left', font=('Arial', 15, 'normal'))
+        self.setpos(280, 270)
+        self.write(f"High score: {self.high_score}", move=False, align='right', font=('Arial', 15, 'normal'))
 
     def update_score(self):
         """Add and display the score"""
         self.score += 1
-        self.clear()
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open('high_score.txt', mode='w') as file:
+                file.write(str(self.score))
         self.display_score()
 
     def game_over(self):
@@ -32,4 +40,7 @@ class Scoreboard(Turtle):
         self.goto(0, -15)
         self.write(f"Final Score: {self.score}", move=False, align='center', font=('Arial', 15, 'normal'))
 
+    def reset(self):
+        self.score = 0
+        self.display_score()
 
